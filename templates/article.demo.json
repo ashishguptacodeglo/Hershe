@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "first": {
+      "type": "demo-article",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "first"
+  ]
+}

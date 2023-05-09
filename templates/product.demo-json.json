@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "json-demo-section",
+      "settings": {
+        "logo_image": "shopify:\/\/shop_images\/images.png",
+        "show_announcement": true,
+        "vertical_alignment": "middle"
+      }
+    },
+    "second": {
+      "type": "json-section-2",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "second"
+  ]
+}

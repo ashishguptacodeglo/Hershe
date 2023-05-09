@@ -1,0 +1,53 @@
+<p> Product Id is {{product.id}} </p>
+{% for image in product.images %}
+ <img src="{{ image | image_url: width: 300 }}">
+{% endfor %}
+
+Called Snippet Via Section
+
+{% include 'pdp-snippet' %}
+
+
+<img src="{{section.settings.logo_image | img_url : 'grande' }}">
+
+
+{% schema %}
+  {
+    "name": "JSON  Section 1",
+    "settings": [{
+  "type": "image_picker",
+  "id": "logo_image",
+  "label": "Logo image"
+},{
+  "type": "checkbox",
+  "id": "show_announcement",
+  "label": "Show announcement",
+  "default": true
+},{
+  "type": "select",
+  "id": "vertical_alignment",
+  "label": "Vertical alignment",
+  "options": [
+    {
+      "value": "top",
+      "label": "Top"
+    },
+    {
+      "value": "middle",
+      "label": "Middle"
+    },
+    {
+      "value": "bottom",
+      "label": "Bottom"
+    }
+  ],
+  "default": "middle"
+}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

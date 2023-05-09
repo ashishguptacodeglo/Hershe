@@ -1,0 +1,57 @@
+<link rel="preload" href="https://app.novel.com/vendor/js/novel-storefront.js?shop={{ shop.permanent_domain }}" as="script">
+<script type="text/javascript" async="" src="https://app.novel.com/vendor/js/novel-storefront.js?shop={{ shop.permanent_domain }}"></script>
+{% if request and request.origin %}
+    {% assign fullUrl = request.origin | append: request.path %}
+{% endif %}{% if handle or fullUrl %}{% assign handleArray = "boka-brush-bogo-special#&#https://codeglo-dev.myshopify.com/blogs/news#&#https://codeglo-dev.myshopify.com/blogs/news/first-blog#&#https://www.codeglo.com/#&#https://www.codeglo.com/about-us#&#https://www.codeglo.com/careers#&#https://www.codeglo.com/contact-us#&#https://www.codeglo.com/get-quote#&#https://www.codeglo.com/privacy-policy#&#https://www.codeglo.com/products/board-meeting#&#https://www.codeglo.com/products/purchase-requisition#&#https://www.codeglo.com/services#&#https://www.codeglo.com/services/cloud-infrastructure#&#https://www.codeglo.com/services/digital-marketing#&#https://www.codeglo.com/services/mobile-app-development#&#https://www.codeglo.com/services/quality-assurance#&#https://www.codeglo.com/services/security#&#https://www.codeglo.com/services/web-development#&#https://www.codeglo.com/technology" | split: '#&#' %}
+{% assign autoTriggerArray = "true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true" | split: '#&#' %}
+{% assign cssSelectorTriggerEnabledArray = "true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true#&#true" | split: '#&#' %}
+{% assign cssSelectorArray = "form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']#&#form[action='/cart/add'] [type='submit']" | split: '#&#' %}
+{% assign hideCssSelectorArray = "null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null#&#null" | split: '#&#' %}{% for handleItem in handleArray %}
+        {% if handleItem != "null" %}
+            {% if handle and handle == handleItem or fullUrl and fullUrl == handleItem %}
+                {% assign pageHasGate = true %}
+                {% assign arrIndex = forloop.index | minus: 1 %}
+                {% assign autoTrigger = autoTriggerArray[arrIndex] %}
+                {% assign cssSelectorTriggerEnabled = cssSelectorTriggerEnabledArray[arrIndex] %}
+                {% assign cssSelectorText = cssSelectorArray[arrIndex] %}
+                {% assign hideCssSelectorText = hideCssSelectorArray[arrIndex] %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% if pageHasGate %}
+        <style>
+            .shopify-payment-button {
+                display: none;
+            }
+            {% if cssSelectorTriggerEnabled == "true" %}
+                {% if cssSelectorText != "null" %}
+                    {{ cssSelectorText }} {
+                        transition: opacity .15s ease-in-out;
+                    }
+                {% endif %}
+            {% endif %}
+        </style>
+        <style id="__novel-style-tag__">
+            {% if autoTrigger == "true" %}
+                {% if cssSelectorTriggerEnabled == "true" %}
+                    {% if cssSelectorText != "null" %}
+                        {{ cssSelectorText }} {
+                            pointer-events: none;
+                            opacity: 0;
+                        }
+                    {% endif %}
+                    {% if hideCssSelectorText != "null" %}
+                        {{ hideCssSelectorText }} {
+                            display: none;
+                        }
+                    {% endif %}
+                {% else %}
+                    body {
+                        filter: blur(4px);
+                        -webkit-filter: blur(4px);
+                        pointer-events: none;
+                    }
+                {% endif %}
+            {% endif %}
+        </style>
+    {% endif %}{% endif %}
